@@ -36,7 +36,7 @@ begin
   v1    = ubaro*sin(angle)+vbaro*cos(angle);
   title1= "rotated"
 
-  fname = "micom_rotate"
+  fname = "vector_rotate"
 
   s0 = sqrt(u0^2+v0^2)
   s1 = sqrt(u1^2+v1^2)

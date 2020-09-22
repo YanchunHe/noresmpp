@@ -1,19 +1,32 @@
 #!/bin/bash
-set -ex
-# NorESM User Workshop 2019
+#set -x
+
+# Script to use NCO and CDO utilities to interpolate
+# hybrid pressure-sigma layers of CAM output to
+# pressure levels
+
+# NorESM User Workshop 2020
 # yanchun.he@nersc.no
 
-# Interpolate vertical hybrid pressure-sigma layers of CAM output ...
-# to pressure levels
+which ncks &>/dev/null
+if [ $? -ne 0 ];then
+    module -q load NCO/4.7.2-intel-2018a
+fi
+which cdo &>/dev/null
+if [ $? -ne 0 ];then
+    module -q load CDO/1.9.3-intel-2018a
+fi
+which ncview &>/dev/null
+if [ $? -ne 0 ];then
+    module load ncview/2.1.7-intel-2018a
+fi
 
-DIRROOT=/projects/NS2345K/workshop
-CASENAME=N1850_f19_tn14_20190621
-filename=${DIRROOT}/cases/${CASENAME}/atm/hist/N1850_f19_tn14_20190621.cam.h0.1750-01.nc
 VAR=T
+casename=NHIST_f19_tn14_20190710
+archivedir=/cluster/work/users/yanchun/archive
+dataname=${casename}.cam.h0.2010-01.nc
 
-# Change to working directory
-mkdir -p ~/workshop/task4.1
-cd ~/workshop/task4.1
+datafile=${archivedir}/${casename}/atm/hist/${dataname}
 
 # Extract variable
 ncks -O -v ${VAR},ilev $filename var_tmp.nc
@@ -28,6 +41,8 @@ ncap2 -O -s 'plev=plev/100' var_ml2pl.nc var_ml2pl.nc
 ncatted -a units,plev,m,c,"hPa" var_ml2pl.nc
 # Make zonal mean
 cdo -s zonmean var_ml2pl.nc var_ml2pl_zm.nc
+# Clean temp file
+rm -f var_tmp.nc
 # View result
 ncview var_ml2pl_zm.nc &
 
