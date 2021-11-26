@@ -4,7 +4,7 @@
 #CASE=NHIST_f19_tn14_20190710
 CASE=N1850_f19_tn14_20190621
 CASEfrom=/projects/NS9560K/noresm/cases/$CASE
-CASEto=/tos-project1/NS2345K/workshop/cases
+CASEto=/projects/NS2345K/Workshop2021/$USER
 
 cd $CASEfrom
 #files=($(find -name '*201[0-4]-*.nc' -print))   #NHIST_f19_tn14_20190710

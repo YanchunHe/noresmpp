@@ -5,7 +5,7 @@
 # hybrid pressure-sigma layers of CAM output to
 # pressure levels
 
-# NorESM User Workshop 2020
+# NorESM User Workshop 2021
 # yanchun.he@nersc.no
 
 which ncks &>/dev/null
@@ -23,7 +23,7 @@ fi
 
 VAR=T
 casename=NHIST_f19_tn14_20190710
-archivedir=/cluster/work/users/yanchun/archive
+archivedir=/cluster/work/users/$USER/archive
 dataname=${casename}.cam.h0.2010-01.nc
 
 datafile=${archivedir}/${casename}/atm/hist/${dataname}

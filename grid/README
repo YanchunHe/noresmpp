@@ -2,3 +2,9 @@
 
 (link to) grid file:
 * grid_tnx1v4.nc
+
+copied from Betzy: /cluster/shared/noresm/inputdata/ocn/blom/grid/grid_tnx1v4_20170622.nc
+which is specificed in `/cluster/work/users/<username>/noresm/<casename>/run/ocn_in` file
+```
+GRFILE   = '/cluster/shared/noresm/inputdata/ocn/blom/grid/grid_tnx1v4_20170622.nc'
+```
